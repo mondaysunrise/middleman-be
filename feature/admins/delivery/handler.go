@@ -74,7 +74,8 @@ func (ph *productHandler) Create() echo.HandlerFunc {
 
 		// memberikan nama file
 		fileName := time.Now().Format("2006-01-0215:04:05") + "-s3" + "." + extension
-		url, errUploadImg := _helper.UploadImageToS3(fileName, fileData)
+		// url, errUploadImg := _helper.UploadImageToS3(fileName, fileData)
+		url, errUploadImg := _helper.GetStorageClient().UploadFile(fileData, fileName)
 		if errUploadImg != nil {
 			fmt.Println(errUploadImg)
 			return c.JSON(http.StatusInternalServerError, _helper.ResponseFailed("failed to upload file "))
@@ -175,7 +176,8 @@ func (ph *productHandler) Update() echo.HandlerFunc {
 
 			// memberikan nama file
 			fileName := time.Now().Format("2006-01-0215:04:05") + "-s3" + "." + extension
-			url, errUploadImg := _helper.UploadImageToS3(fileName, fileData)
+			// url, errUploadImg := _helper.UploadImageToS3(fileName, fileData)
+			url, errUploadImg := _helper.GetStorageClient().UploadFile(fileData, fileName)
 			if errUploadImg != nil {
 				fmt.Println(errUploadImg)
 				return c.JSON(http.StatusInternalServerError, _helper.ResponseFailed("failed to upload file "))

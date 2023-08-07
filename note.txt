@@ -7,6 +7,7 @@ export DBport=3306
 export DBname="project3"
 export SECRET="h1d3n"
 export SERVERPORT=8080
+export MIDTRANS_SERVER_KEY=
 
 export AWS_BUCKET="heribucketbe10"
 export AWS_REGION="us-east-1"
